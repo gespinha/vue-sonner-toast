@@ -1,3 +1,7 @@
+> **Note:** This is a fork of [vue-sonner](https://www.npmjs.com/package/vue-sonner) published as [`vue-sonner-toast`](https://www.npmjs.com/package/vue-sonner-toast). It adds support for **multiple action buttons** on a single toast via the `actions` prop — a feature not available in the original package.
+
+---
+
 # Sonner for Vue
 
 [![NPM][npmBadge]][npmUrl]
