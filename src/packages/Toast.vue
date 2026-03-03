@@ -156,6 +156,25 @@
           {{ isAction(toast.action) ? toast.action?.label : toast.action }}
         </button>
       </template>
+      <template v-if="toast.actions && toast.actions.length">
+        <button
+          v-for="(action, i) in toast.actions"
+          :key="i"
+          :style="action.actionButtonStyle || toast.actionButtonStyle || actionButtonStyle"
+          :class="cn(classes?.actionButton, toast.classes?.actionButton)"
+          data-button
+          data-action
+          @click="
+            (event) => {
+              action.onClick?.(event);
+              if (event.defaultPrevented) return;
+              deleteToast();
+            }
+          "
+        >
+          {{ action.label }}
+        </button>
+      </template>
     </template>
   </li>
 </template>
