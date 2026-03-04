@@ -5,15 +5,9 @@
 # Sonner for Vue
 
 [![NPM][npmBadge]][npmUrl]
-[![Minzip Package][bundlePhobiaBadge]][bundlePhobiaUrl]
-[![NPM Download][npmDtBadge]][npmDtUrl]
 
-[npmBadge]: https://img.shields.io/npm/v/vue-sonner.svg?maxAge=2592000
-[npmUrl]: https://www.npmjs.com/package/vue-sonner
-[npmDtBadge]: https://img.shields.io/npm/dt/vue-sonner.svg
-[npmDtUrl]: https://www.npmjs.com/package/vue-sonner
-[bundlePhobiaBadge]: https://img.shields.io/bundlephobia/minzip/vue-sonner
-[bundlePhobiaUrl]: https://bundlephobia.com/package/vue-sonner@latest
+[npmBadge]: https://img.shields.io/badge/npm-v1.0.0-blue
+[npmUrl]: https://www.npmjs.com/package/vue-sonner-toast
 
 > An opinionated toast component for Vue. It's a Vue port of Sonner
 
@@ -23,7 +17,7 @@ https://user-images.githubusercontent.com/6118824/228208185-be5aefd4-7fa8-4f95-a
 
 ## Introduction
 
-`Vue Sonner` is an opinionated toast component for Vue. It's customizable, but styled by default. Comes with a swipe to dismiss animation.
+`Vue Sonner Toast` is an opinionated toast component for Vue. It's customizable, but styled by default. Comes with a swipe to dismiss animation.
 
 ## Table of Contents
 
@@ -66,7 +60,6 @@ https://user-images.githubusercontent.com/6118824/228208185-be5aefd4-7fa8-4f95-a
     - [Persisting toasts](#persisting-toasts)
     - [Dismissing toasts programmatically](#dismissing-toasts-programmatically)
     - [Keyboard focus](#keyboard-focus)
-  - [Contributors](#contributors)
   - [Inspiration](#inspiration)
   - [License](#license)
 
@@ -77,9 +70,9 @@ https://user-images.githubusercontent.com/6118824/228208185-be5aefd4-7fa8-4f95-a
 To start using the library, install it in your project:
 
 ```bash
-pnpm install vue-sonner
+pnpm install vue-sonner-toast
 or
-yarn add vue-sonner
+yarn add vue-sonner-toast
 ```
 
 ## Test
@@ -103,7 +96,7 @@ pnpm test:e2e --ui
 
 ### Build and watch for change in order to fix the test
 
-This command will build the vue-sonner library in lib mode, and add a watch so every time you modify the code of the library, you will have a new bundle and can run the test again.
+This command will build the vue-sonner-toast library in lib mode, and add a watch so every time you modify the code of the library, you will have a new bundle and can run the test again.
 
 ```bash
 pnpm build:dev
@@ -121,21 +114,21 @@ pnpm build:dev
 </template>
 
 <script lang="ts" setup>
-  import 'vue-sonner/style.css'
-  import { Toaster, toast } from 'vue-sonner'
+  import 'vue-sonner-toast/style.css'
+  import { Toaster, toast } from 'vue-sonner-toast'
 </script>
 ```
 
 ### For Nuxt 3
 
-Use `vue-sonner/nuxt` module
+Use `vue-sonner-toast/nuxt` module
 
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
   ...
-  modules: ['vue-sonner/nuxt']
-  vueSonner: {
+  modules: ['vue-sonner-toast/nuxt']
+  vueSonnerToast: {
     css: false // true by default to include css file
   }
 })
@@ -162,7 +155,7 @@ Use `Toaster` component and `$toast` function anywhere in the Vue SFC
 **EMS version**
 
 ```ts
-https://cdn.jsdelivr.net/npm/vue-sonner/+esm
+https://cdn.jsdelivr.net/npm/vue-sonner-toast/+esm
 ```
 
 ## Types
@@ -473,16 +466,10 @@ You can focus on the toast area by pressing ⌥/alt + T. You can override it by 
 <Toaster hotkey="['KeyC']" />
 ```
 
-## Contributors
-
-<a href="https://github.com/xiaoluoboding/vue-sonner/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=xiaoluoboding/vue-sonner" />
-</a>
-
 ## Inspiration
 
 - [sonner](https://github.com/emilkowalski/sonner) - An opinionated toast component for React.
 
 ## License
 
-MIT [@xiaoluoboding](https://github.com/xiaoluoboding)
+MIT

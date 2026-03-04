@@ -1,14 +1,13 @@
 {
   "name": "vue-sonner-toast",
   "type": "module",
-  "version": "2.0.9",
+  "version": "1.0.0",
   "packageManager": "pnpm@10.11.0",
-  "author": "xiaoluoboding <xiaoluoboding@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/xiaoluoboding/vue-sonner",
+  "homepage": "https://github.com/gespinha/vue-sonner-toast",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiaoluoboding/vue-sonner.git"
+    "url": "git+https://github.com/gespinha/vue-sonner-toast.git"
   },
   "sideEffects": [
     "**/*.css",
