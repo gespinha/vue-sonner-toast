@@ -139,41 +139,43 @@
         </button>
       </template>
       <template v-if="toast.action">
-        <button
-          :style="toast.actionButtonStyle || actionButtonStyle"
-          :class="cn(classes?.actionButton, toast.classes?.actionButton)"
-          data-button
-          data-action
-          @click="
-            (event) => {
-              if (!isAction(toast.action!)) return;
-              toast.action.onClick?.(event);
-              if (event.defaultPrevented) return;
-              deleteToast();
-            }
-          "
-        >
-          {{ isAction(toast.action) ? toast.action?.label : toast.action }}
-        </button>
-      </template>
-      <template v-if="toast.actions && toast.actions.length">
-        <button
-          v-for="(action, i) in toast.actions"
-          :key="i"
-          :style="action.actionButtonStyle || toast.actionButtonStyle || actionButtonStyle"
-          :class="cn(classes?.actionButton, toast.classes?.actionButton)"
-          data-button
-          data-action
-          @click="
-            (event) => {
-              action.onClick?.(event);
-              if (event.defaultPrevented) return;
-              deleteToast();
-            }
-          "
-        >
-          {{ action.label }}
-        </button>
+        <template v-if="actionAsArray">
+          <button
+            v-for="(action, i) in actionAsArray"
+            :key="i"
+            :style="action.actionButtonStyle || toast.actionButtonStyle || actionButtonStyle"
+            :class="cn(classes?.actionButton, toast.classes?.actionButton)"
+            data-button
+            data-action
+            @click="
+              (event) => {
+                action.onClick?.(event);
+                if (event.defaultPrevented) return;
+                deleteToast();
+              }
+            "
+          >
+            {{ action.label }}
+          </button>
+        </template>
+        <template v-else-if="singleAction">
+          <button
+            :style="toast.actionButtonStyle || actionButtonStyle"
+            :class="cn(classes?.actionButton, toast.classes?.actionButton)"
+            data-button
+            data-action
+            @click="
+              (event) => {
+                if (!isAction(singleAction!)) return;
+                (singleAction as Action).onClick?.(event);
+                if (event.defaultPrevented) return;
+                deleteToast();
+              }
+            "
+          >
+            {{ isAction(singleAction) ? (singleAction as Action)?.label : singleAction }}
+          </button>
+        </template>
       </template>
     </template>
   </li>
@@ -189,7 +191,7 @@ import {
   watchEffect,
   nextTick
 } from 'vue'
-import { type HeightT, type ToastProps, type ToastT, isAction } from './types'
+import { type Action, type HeightT, type ToastProps, type ToastT, isAction } from './types'
 import { useIsDocumentHidden, cn, getDefaultSwipeDirections } from './hooks'
 import { SWIPE_THRESHOLD, TIME_BEFORE_UNMOUNT, TOAST_LIFETIME } from './constant';
 
@@ -264,6 +266,12 @@ const isStringOfTitle = computed(() => typeof props.toast.title !== 'string')
 const isStringOfDescription = computed(() => typeof props.toast.description !== 'string')
 const { isDocumentHidden } = useIsDocumentHidden()
 const disabled = computed(() => toastType.value && toastType.value === 'loading')
+const actionAsArray = computed(() =>
+  Array.isArray(props.toast.action) ? (props.toast.action as Action[]) : null
+)
+const singleAction = computed(() =>
+  Array.isArray(props.toast.action) ? null : props.toast.action
+)
 
 onMounted(() => {
   mounted.value = true

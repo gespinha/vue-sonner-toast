@@ -84,8 +84,7 @@ export interface ToastT<T extends Component = Component> {
   duration?: number
   delete?: boolean
   important?: boolean
-  action?: Action | Component
-  actions?: Action[]
+  action?: Action | Action[] | Component
   cancel?: Action | Component
   onDismiss?: (toast: ToastT) => void
   onAutoClose?: (toast: ToastT) => void

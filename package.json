@@ -1,7 +1,7 @@
 {
   "name": "vue-sonner-toast",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@10.11.0",
   "license": "MIT",
   "homepage": "https://github.com/gespinha/vue-sonner-toast",
