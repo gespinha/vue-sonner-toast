@@ -140,23 +140,25 @@
       </template>
       <template v-if="toast.action">
         <template v-if="actionAsArray">
-          <button
-            v-for="(action, i) in actionAsArray"
-            :key="i"
-            :style="action.actionButtonStyle || toast.actionButtonStyle || actionButtonStyle"
-            :class="cn(classes?.actionButton, toast.classes?.actionButton)"
-            data-button
-            data-action
-            @click="
-              (event) => {
-                action.onClick?.(event);
-                if (event.defaultPrevented) return;
-                deleteToast();
-              }
-            "
-          >
-            {{ action.label }}
-          </button>
+          <div data-actions>
+            <button
+              v-for="(action, i) in actionAsArray"
+              :key="i"
+              :style="action.actionButtonStyle || toast.actionButtonStyle || actionButtonStyle"
+              :class="cn(classes?.actionButton, toast.classes?.actionButton)"
+              data-button
+              data-action
+              @click="
+                (event) => {
+                  action.onClick?.(event);
+                  if (event.defaultPrevented) return;
+                  deleteToast();
+                }
+              "
+            >
+              {{ action.label }}
+            </button>
+          </div>
         </template>
         <template v-else-if="singleAction">
           <button

@@ -686,6 +686,19 @@ html[dir='rtl'],
   margin-right: var(--toast-button-margin-end);
 }
 
+[data-sonner-toast][data-styled='true'] [data-actions] {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: var(--toast-button-margin-start);
+  margin-right: var(--toast-button-margin-end);
+}
+
+[data-sonner-toast][data-styled='true'] [data-actions] [data-button] {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 [data-sonner-toast][data-styled='true'] [data-cancel] {
   color: var(--normal-text);
   background: rgba(0, 0, 0, 0.08);

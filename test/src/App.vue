@@ -83,6 +83,10 @@ onMounted(() => {
       @click="toast('My Message', { action: { label: 'Action', onClick: () => console.log('Action') } })">
       Render Action Toast
     </button>
+    <button data-testid="multiple-actions" class="button"
+      @click="toast('My Message', { action: [{ label: 'Action 1', onClick: () => console.log('Action 1') }, { label: 'Action 2', onClick: () => console.log('Action 2') }] })">
+      Render Multiple Actions Toast
+    </button>
     <button data-testid="action-prevent" className="button" @click="toast('My Message', {
         action: {
           label: 'Action',

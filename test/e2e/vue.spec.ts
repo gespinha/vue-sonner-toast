@@ -242,6 +242,13 @@ test.describe('Basic functionality', () => {
     await expect(button).toHaveCSS('background-color', 'rgb(219, 239, 255)')
   })
 
+  test('multiple action buttons are rendered', async ({ page }) => {
+    await page.getByTestId('multiple-actions').click()
+    await expect(page.locator('[data-action]')).toHaveCount(2)
+    await expect(page.getByText('Action 1')).toHaveCount(1)
+    await expect(page.getByText('Action 2')).toHaveCount(1)
+  })
+
   test('string description is rendered', async ({ page }) => {
     await page.getByTestId('string-description').click()
     await expect(page.getByText('string description')).toHaveCount(1)
